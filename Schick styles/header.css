@@ -1,0 +1,78 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  row-gap: 3vw;
+  align-items: center;
+  justify-content: space-between;
+  background-image: linear-gradient(#4c7088, #131c22);
+  position: static;
+  height: auto;
+  padding: 0 3vw 0 3vw;
+}
+
+@media (max-width:500px) {
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(#4c7088, #131c22);
+    position: static;
+    height: auto;
+    padding: 0 2vw 0 2vw;
+  }
+}
+
+.left-section {
+  padding: 14px;
+
+}
+
+.brand {
+  width: 15vw;
+}
+
+.mid-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  gap: 1.5vw;
+
+}
+
+
+.header-items {
+  font-family: "kay pho du", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5vw;
+  color: white;
+  cursor: pointer;
+}
+
+.header-items:hover {
+  text-decoration-line: underline;
+  color: white;
+}
+
+.right-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  vertical-align: top;
+  gap: 2vw;
+
+}
+
+
+.right-icon {
+  width: 2vw;
+
+}
+
+.right-icon:hover {
+  cursor: pointer;
+}

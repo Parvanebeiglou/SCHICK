@@ -1,0 +1,10 @@
+body {
+    height: 1880px;
+    margin: 0;
+}
+
+@media (max-width:750px) {
+    body {
+        height: 1000px;
+    }
+}
