@@ -1,3 +1,5 @@
+@use "tokens" as tokens;
+
 :root {
   color-scheme: light;
   --paper: #f6f4ee;
@@ -116,7 +118,7 @@ img { display: block; max-width: 100%; }
 @keyframes toast-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .noscript-note { padding: 20px; text-align: center; }
 
-@media (max-width: 700px) {
+@media (max-width: tokens.$mobile) {
   .section-wrap { width: calc(100% - 40px); }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,12 @@
+{
+  "name": "schick-storefront",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "sass": "sass --no-source-map --style=expanded styles/main.scss \"Schick styles/main.css\"",
+    "sass:watch": "sass --watch --no-source-map --style=expanded styles/main.scss \"Schick styles/main.css\""
+  },
+  "devDependencies": {
+    "sass": "^1.89.0"
+  }
+}

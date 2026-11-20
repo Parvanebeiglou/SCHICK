@@ -1,3 +1,5 @@
+@use "tokens" as tokens;
+
 .collection { padding-bottom: 30px; scroll-margin-top: 24px; }
 .section-heading {
   display: flex;
@@ -55,7 +57,8 @@
 }
 .pagination .pagination-direction { min-width: 84px; }
 .pagination button:hover:not(:disabled) { border-color: var(--ink); background: #e9e5db; }
-.pagination .page-number[aria-current="page"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+.pagination .page-number[aria-current="page"],
+.pagination .page-number.is-current { border-color: var(--ink); background: var(--ink); color: #fff; }
 .pagination button:disabled { color: #a8a69e; cursor: not-allowed; }
 .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 34px 18px; }
 .product-card { min-width: 0; }
@@ -176,8 +179,8 @@
 .cart-summary small { color: var(--muted); font-size: 13px; }
 .checkout-button { width: 100%; margin-top: 18px; }
 
-@media (max-width: 900px) { .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 640px) {
+@media (max-width: tokens.$product-tablet) { .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: tokens.$product-mobile) {
   .section-heading { align-items: flex-start; flex-direction: column; gap: 9px; margin-bottom: 20px; }
   .shop-toolbar { align-items: flex-start; flex-direction: column; gap: 8px; padding-block: 10px; }
   .filter-list { flex-wrap: nowrap; width: 100%; overflow-x: auto; }

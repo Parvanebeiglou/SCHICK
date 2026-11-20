@@ -1,3 +1,5 @@
+@use "tokens" as tokens;
+
 .newsletter {
   display: grid;
   grid-template-columns: 1fr minmax(280px, 430px);
@@ -26,7 +28,7 @@
 .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 17px; border-top: 1px solid #ffffff27; color: #b7b7ad; font-size: 13px; }
 .footer-bottom a:hover { color: white; }
 
-@media (max-width: 700px) {
+@media (max-width: tokens.$mobile) {
   .newsletter { grid-template-columns: 1fr; gap: 28px; margin-top: 78px; padding: 54px 24px; }
   .site-footer { padding: 48px 24px 18px; }
   .footer-top { flex-direction: column; gap: 38px; padding-bottom: 38px; }

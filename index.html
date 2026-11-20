@@ -15,11 +15,9 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="Schick styles/general.css" />
-    <link rel="stylesheet" href="Schick styles/header.css" />
-    <link rel="stylesheet" href="Schick styles/title&image.css" />
-    <link rel="stylesheet" href="Schick styles/products.css" />
-    <link rel="stylesheet" href="Schick styles/footer.css" />
+    <link rel="stylesheet" href="Schick styles/main.css" />
+    <script src="data/products.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/knockout@3.5.1/build/output/knockout-latest.js"></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -39,15 +37,15 @@
         <label class="search-box">
           <span class="sr-only">Search products</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg>
-          <input id="product-search" type="search" placeholder="Find something..." autocomplete="off" />
+          <input id="product-search" type="search" placeholder="Find something..." autocomplete="off" data-bind="textInput: query" />
         </label>
-        <button class="icon-button wishlist-toggle" type="button" aria-label="Show saved items">
+        <button class="icon-button wishlist-toggle" type="button" aria-label="Show saved items" data-bind="click: toggleWishlist, attr: { 'aria-pressed': wishlistOnly }">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12Z"></path></svg>
-          <span class="count-badge wishlist-count" aria-live="polite">0</span>
+          <span class="count-badge wishlist-count" aria-live="polite" data-bind="text: wishlistCount"></span>
         </button>
-        <button class="icon-button cart-toggle" type="button" aria-label="Open shopping bag">
+        <button class="icon-button cart-toggle" type="button" aria-label="Open shopping bag" data-bind="click: openCart">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg>
-          <span class="count-badge cart-count" aria-live="polite">0</span>
+          <span class="count-badge cart-count" aria-live="polite" data-bind="text: cartCount"></span>
         </button>
       </div>
     </header>
@@ -82,15 +80,15 @@
         </div>
         <div class="shop-toolbar">
           <div class="filter-list" role="group" aria-label="Filter products by category">
-            <button class="filter-chip is-active" type="button" data-category="All" aria-pressed="true">All pieces</button>
-            <button class="filter-chip" type="button" data-category="Outerwear" aria-pressed="false">Outerwear</button>
-            <button class="filter-chip" type="button" data-category="Tops" aria-pressed="false">Tops</button>
-            <button class="filter-chip" type="button" data-category="Sets" aria-pressed="false">Sets</button>
-            <button class="filter-chip" type="button" data-category="Accessories" aria-pressed="false">Accessories</button>
+            <button class="filter-chip" type="button" data-bind="click: function() { selectCategory('All') }, css: { 'is-active': category() === 'All' }, attr: { 'aria-pressed': category() === 'All' }">All pieces</button>
+            <button class="filter-chip" type="button" data-bind="click: function() { selectCategory('Outerwear') }, css: { 'is-active': category() === 'Outerwear' }, attr: { 'aria-pressed': category() === 'Outerwear' }">Outerwear</button>
+            <button class="filter-chip" type="button" data-bind="click: function() { selectCategory('Tops') }, css: { 'is-active': category() === 'Tops' }, attr: { 'aria-pressed': category() === 'Tops' }">Tops</button>
+            <button class="filter-chip" type="button" data-bind="click: function() { selectCategory('Sets') }, css: { 'is-active': category() === 'Sets' }, attr: { 'aria-pressed': category() === 'Sets' }">Sets</button>
+            <button class="filter-chip" type="button" data-bind="click: function() { selectCategory('Accessories') }, css: { 'is-active': category() === 'Accessories' }, attr: { 'aria-pressed': category() === 'Accessories' }">Accessories</button>
           </div>
           <label class="sort-control">
             <span>Sort by</span>
-            <select id="sort-products" aria-label="Sort products">
+            <select id="sort-products" aria-label="Sort products" data-bind="value: sort">
               <option value="featured">Featured</option>
               <option value="price-low">Price: low to high</option>
               <option value="price-high">Price: high to low</option>
@@ -98,14 +96,38 @@
             </select>
           </label>
         </div>
-        <p class="results-summary" aria-live="polite"></p>
-        <div class="product-grid" id="product-grid" aria-live="polite"></div>
-        <nav class="pagination" aria-label="Product pages" hidden></nav>
-        <div class="empty-state" id="empty-state" hidden>
+        <p class="results-summary" aria-live="polite" data-bind="text: resultsSummary"></p>
+        <div class="product-grid" id="product-grid" aria-live="polite" data-bind="foreach: paginatedProducts">
+          <article class="product-card">
+            <div class="product-image-wrap">
+              <img data-bind="attr: { src: image, alt: name }" loading="lazy" />
+              <button class="favorite-button" type="button" data-bind="click: function(product, event) { $root.toggleFavorite(id, event.currentTarget) }, attr: { 'aria-label': $root.isSaved(id) ? 'Remove from saved items' : 'Add to saved items', 'aria-pressed': $root.isSaved(id) }">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12Z"></path></svg>
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-copy"><h3 class="product-name" data-bind="text: name"></h3><p class="product-detail" data-bind="text: detail"></p></div>
+              <p class="product-price" data-bind="text: $root.money(price)"></p>
+            </div>
+            <div class="product-quantity" role="group" data-bind="attr: { 'aria-label': 'Quantity of ' + name + ' in your bag' }">
+              <button type="button" data-bind="click: function() { $root.changeCartQuantity(id, -1) }, enable: $root.cartQuantity(id) > 0, attr: { 'aria-label': 'Remove one ' + name }">−</button>
+              <span data-bind="text: $root.cartQuantity(id), attr: { 'aria-label': $root.cartQuantity(id) + ' in bag' }" aria-live="polite"></span>
+              <button type="button" data-bind="click: function() { $root.changeCartQuantity(id, 1) }, attr: { 'aria-label': 'Add one ' + name }">+</button>
+            </div>
+          </article>
+        </div>
+        <nav class="pagination" aria-label="Product pages" data-bind="visible: pageCount() > 1">
+          <button class="pagination-direction" type="button" data-bind="click: previousPage, enable: currentPage() > 1">Previous</button>
+          <div class="pagination-pages" role="group" aria-label="Choose a page" data-bind="foreach: pageNumbers">
+            <button class="page-number" type="button" data-bind="text: $data, click: function() { $root.goToPage($data) }, css: { 'is-current': $data === $root.currentPage() }, attr: { 'aria-label': 'Page ' + $data, 'aria-current': $data === $root.currentPage() ? 'page' : null }"></button>
+          </div>
+          <button class="pagination-direction" type="button" data-bind="click: nextPage, enable: currentPage() < pageCount()">Next</button>
+        </nav>
+        <div class="empty-state" id="empty-state" data-bind="visible: visibleProducts().length === 0">
           <p class="eyebrow">Nothing here (yet)</p>
           <h3>No pieces found.</h3>
           <p>Try a different search or reset your filters to see the full edit.</p>
-          <button class="button button-dark reset-filters" type="button">See all pieces</button>
+          <button class="button button-dark reset-filters" type="button" data-bind="click: resetFilters">See all pieces</button>
         </div>
       </section>
 
@@ -136,7 +158,7 @@
             <img src="images/pexels_olly_3755706.jpg" alt="" loading="lazy" />
             <span>For him <span aria-hidden="true">↗</span></span>
           </a>
-          <button class="category-card" type="button" data-category="Accessories">
+          <button class="category-card" type="button" data-bind="click: function() { selectCategory('Accessories'); showCollection() }">
             <img src="images/bag.jpg" alt="" loading="lazy" />
             <span>The finishing touch <span aria-hidden="true">↗</span></span>
           </button>
@@ -172,29 +194,29 @@
           <div><p class="footer-label">The small print</p><a href="#newsletter-form">Privacy</a><a href="#newsletter-form">Terms</a></div>
         </div>
       </div>
-      <div class="footer-bottom"><span>© <span id="current-year"></span> SCHICK Studio</span><span>Made for getting dressed.</span><a href="#">Back to top ↑</a></div>
+      <div class="footer-bottom"><span>© <span data-bind="text: currentYear"></span> SCHICK Studio</span><span>Made for getting dressed.</span><a href="#">Back to top ↑</a></div>
     </footer>
 
     <dialog class="stylist-dialog" id="stylist-dialog" aria-labelledby="stylist-title">
-      <form class="dialog-form" id="stylist-form">
-        <button class="dialog-close" type="button" data-close-dialog aria-label="Close style finder">×</button>
+      <form class="dialog-form" id="stylist-form" data-bind="submit: submitStylist">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Close style finder" data-bind="click: closeDialog">×</button>
         <p class="eyebrow">Your taste, translated</p>
         <h2 id="stylist-title">Let’s find your <em>thing.</em></h2>
         <p class="dialog-intro">A few quick picks and we’ll make you a personal edit from the shop.</p>
         <fieldset>
           <legend>What feels most like you?</legend>
           <div class="choice-row">
-            <label class="choice-card"><input type="radio" name="style" value="minimal" checked /><span>Clean & easy</span></label>
-            <label class="choice-card"><input type="radio" name="style" value="classic" /><span>Classic & considered</span></label>
-            <label class="choice-card"><input type="radio" name="style" value="street" /><span>Relaxed & bold</span></label>
+            <label class="choice-card"><input type="radio" name="style" value="minimal" data-bind="checked: preferredStyle" /><span>Clean & easy</span></label>
+            <label class="choice-card"><input type="radio" name="style" value="classic" data-bind="checked: preferredStyle" /><span>Classic & considered</span></label>
+            <label class="choice-card"><input type="radio" name="style" value="street" data-bind="checked: preferredStyle" /><span>Relaxed & bold</span></label>
           </div>
         </fieldset>
         <div class="dialog-fields">
           <label>Shopping for
-            <select name="department"><option value="All">Everyone</option><option value="Women">Women</option><option value="Men">Men</option></select>
+            <select name="department" data-bind="value: stylistDepartment"><option value="All">Everyone</option><option value="Women">Women</option><option value="Men">Men</option></select>
           </label>
           <label>Your budget
-            <select name="budget"><option value="any">Any price</option><option value="100">Under $100</option><option value="200">Under $200</option></select>
+            <select name="budget" data-bind="value: stylistBudget"><option value="any">Any price</option><option value="100">Under $100</option><option value="200">Under $200</option></select>
           </label>
         </div>
         <button class="button button-dark dialog-submit" type="submit">Show me my edit <span aria-hidden="true">↗</span></button>
@@ -206,14 +228,28 @@
       <div class="cart-panel">
         <div class="cart-heading">
           <div><p class="eyebrow">Your good finds</p><h2 id="cart-title">Your bag <span class="cart-heading-count">(0)</span></h2></div>
-          <button class="dialog-close" type="button" data-close-dialog aria-label="Close shopping bag">×</button>
+          <button class="dialog-close" type="button" data-close-dialog aria-label="Close shopping bag" data-bind="click: closeDialog">×</button>
         </div>
-        <div class="cart-items" id="cart-items"></div>
-        <div class="cart-empty" id="cart-empty"><p>Your bag’s looking a little light.</p><a href="#collection" class="text-link cart-continue">Find something you love ↗</a></div>
-        <div class="cart-summary">
-          <p><span>Subtotal</span><strong class="cart-subtotal">$0.00</strong></p>
+        <div class="cart-items" id="cart-items" data-bind="visible: cartItems().length > 0, foreach: cartItems">
+          <article class="cart-item">
+            <img data-bind="attr: { src: product.image, alt: '' }" />
+            <div class="cart-item-copy">
+              <strong data-bind="text: product.name"></strong>
+              <small data-bind="text: product.detail"></small>
+              <div class="quantity-control" data-bind="attr: { 'aria-label': 'Quantity for ' + product.name }">
+                <button type="button" data-bind="click: function() { $root.changeCartQuantity(product.id, -1) }, attr: { 'aria-label': 'Remove one ' + product.name }">−</button>
+                <span data-bind="text: quantity"></span>
+                <button type="button" data-bind="click: function() { $root.changeCartQuantity(product.id, 1) }, attr: { 'aria-label': 'Add one ' + product.name }">+</button>
+              </div>
+            </div>
+            <div class="cart-item-end"><strong data-bind="text: $root.money(product.price * quantity)"></strong><button class="remove-item" type="button" data-bind="click: function() { $root.removeFromCart(product.id) }">Remove</button></div>
+          </article>
+        </div>
+        <div class="cart-empty" id="cart-empty" data-bind="visible: cartItems().length === 0"><p>Your bag’s looking a little light.</p><a href="#collection" class="text-link cart-continue" data-bind="click: closeDialog">Find something you love ↗</a></div>
+        <div class="cart-summary" data-bind="visible: cartItems().length > 0">
+          <p><span>Subtotal</span><strong class="cart-subtotal" data-bind="text: money(cartSubtotal())"></strong></p>
           <small>Shipping and any applicable taxes are calculated at checkout.</small>
-          <button class="button button-dark checkout-button" type="button">Continue to checkout <span aria-hidden="true">↗</span></button>
+          <button class="button button-dark checkout-button" type="button" data-bind="click: checkout">Continue to checkout <span aria-hidden="true">↗</span></button>
         </div>
       </div>
     </dialog>

@@ -1,3 +1,5 @@
+@use "tokens" as tokens;
+
 .hero {
   position: relative;
   min-height: min(660px, 63vw);
@@ -149,7 +151,7 @@
 .dialog-submit { width: 100%; }
 .privacy-note { margin: 12px 0 0; color: var(--muted); text-align: center; font-size: 13px; }
 
-@media (max-width: 700px) {
+@media (max-width: tokens.$mobile) {
   .hero { min-height: 570px; }
   .hero-image { object-position: 58% center; }
   .hero-shade { background: linear-gradient(90deg, #171a17b8, #171a1740 80%); }
@@ -160,7 +162,7 @@
   .stylist-banner { min-height: 380px; grid-template-columns: 1fr; margin-top: 76px; padding: 56px 28px; }
   .banner-art { display: none; }
 }
-@media (max-width: 440px) {
+@media (max-width: tokens.$dialog-mobile) {
   .choice-row { grid-template-columns: 1fr; }
   .choice-card span { min-height: 42px; }
   .dialog-fields { grid-template-columns: 1fr; margin-block: 16px; }
