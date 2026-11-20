@@ -9,15 +9,56 @@ const products = [
   { id: "longline-coat", name: "The longline coat", detail: "Made for layering · Men", price: 260, image: "images/pexels_vladimir_kudin_131638970_10141153.png", category: "Outerwear", department: "Men", styles: ["classic", "minimal"] },
   { id: "leather-overshirt", name: "The leather overshirt", detail: "A modern classic · Men", price: 210, image: "images/pexels_thomas_nguka_46791184_11434885.png", category: "Outerwear", department: "Men", styles: ["street", "classic"] },
   { id: "relaxed-jacket", name: "The relaxed jacket", detail: "Everyday, reworked · Men", price: 148, image: "images/pexels_gipain_8970564.png", category: "Outerwear", department: "Men", styles: ["minimal", "street"] },
-  { id: "everyday-bag", name: "The everyday carryall", detail: "Room for your whole day · Unisex", price: 88, image: "images/bag.jpg", category: "Accessories", department: "Unisex", styles: ["minimal", "classic"] },
+  { id: "everyday-bag", name: "The everyday carryall", detail: "Room for your whole day · Women", price: 88, image: "images/bag.jpg", category: "Accessories", department: "Women", styles: ["minimal", "classic"] },
   { id: "milan-wool-coat", name: "The Milan wool coat", detail: "An easy city layer · Women", price: 285, image: "images/city-style.jpg", category: "Outerwear", department: "Women", styles: ["minimal", "classic"] },
   { id: "sunset-lounge-set", name: "The sunset lounge set", detail: "The matching moment · Women", price: 165, image: "images/street-style.jpg", category: "Sets", department: "Women", styles: ["street"] },
-  { id: "graphic-tee", name: "The graphic cotton tee", detail: "A little attitude · Unisex", price: 58, image: "images/modern-style.jpg", category: "Tops", department: "Unisex", styles: ["street"] },
+  { id: "graphic-tee", name: "The graphic cotton tee", detail: "A little attitude · Women", price: 58, image: "images/modern-style.jpg", category: "Tops", department: "Women", styles: ["street"] },
   { id: "city-utility-jacket", name: "The city utility jacket", detail: "Made for the everyday · Men", price: 195, image: "images/mens-style.jpg", category: "Outerwear", department: "Men", styles: ["street", "minimal"] },
   { id: "everyday-graphic-tee", name: "The everyday graphic tee", detail: "Soft cotton · Women", price: 54, image: "images/casual-style.jpg", category: "Tops", department: "Women", styles: ["street", "minimal"] },
+  { id: "olive-city-coat", name: "The olive city coat", detail: "Soft tailoring · Women", price: 298, image: "images/outerwear-01.jpg", category: "Outerwear", department: "Women", styles: ["minimal", "classic"] },
+  { id: "redline-sport-jacket", name: "The redline sport jacket", detail: "Lightweight shell · Women", price: 188, image: "images/outerwear-02.jpg", category: "Outerwear", department: "Women", styles: ["street"] },
+  { id: "sunroom-fleece", name: "The sunroom fleece", detail: "Brushed cotton · Unisex", price: 128, image: "images/outerwear-03.jpg", category: "Outerwear", department: "Unisex", styles: ["minimal", "street"] },
+  { id: "easy-wardrobe-layer", name: "The easy wardrobe layer", detail: "Relaxed overshirt · Men", price: 168, image: "images/outerwear-04.jpg", category: "Outerwear", department: "Men", styles: ["minimal", "classic"] },
+  { id: "camel-tailored-blazer", name: "The camel tailored blazer", detail: "Soft-structured wool · Women", price: 248, image: "images/outerwear-06.jpg", category: "Outerwear", department: "Women", styles: ["classic", "minimal"] },
+  { id: "black-drape-jacket", name: "The black drape jacket", detail: "An easy statement layer · Women", price: 215, image: "images/outerwear-07.jpg", category: "Outerwear", department: "Women", styles: ["minimal", "street"] },
+  { id: "midnight-longline-coat", name: "The midnight longline coat", detail: "Brushed wool blend · Men", price: 285, image: "images/outerwear-09.jpg", category: "Outerwear", department: "Men", styles: ["classic", "minimal"] },
+  { id: "washed-denim-overshirt", name: "The washed denim overshirt", detail: "Everyday denim · Women", price: 178, image: "images/tops-04.jpg", category: "Outerwear", department: "Women", styles: ["street", "minimal"] },
+  { id: "rose-cropped-bomber", name: "The rose cropped bomber", detail: "Lightweight satin · Women", price: 198, image: "images/tops-07.jpg", category: "Outerwear", department: "Women", styles: ["street", "classic"] },
+  { id: "soft-leather-trucker", name: "The soft leather trucker", detail: "A modern edge · Men", price: 320, image: "images/tops-08.jpg", category: "Outerwear", department: "Men", styles: ["street", "classic"] },
+  { id: "soft-drape-blouse", name: "The soft drape blouse", detail: "Fluid satin · Women", price: 118, image: "images/tops-02.jpg", category: "Tops", department: "Women", styles: ["classic", "minimal"] },
+  { id: "cotton-weekend-shirt", name: "The cotton weekend shirt", detail: "Easy cotton · Women", price: 88, image: "images/tops-03.jpg", category: "Tops", department: "Women", styles: ["minimal", "classic"] },
+  { id: "linen-tunic-top", name: "The linen tunic top", detail: "Lightweight linen · Women", price: 98, image: "images/tops-05.jpg", category: "Tops", department: "Women", styles: ["minimal", "classic"] },
+  { id: "everyday-oxford", name: "The everyday Oxford", detail: "Crisp cotton · Men", price: 92, image: "images/tops-06.jpg", category: "Tops", department: "Men", styles: ["classic", "minimal"] },
+  { id: "modern-cotton-tee", name: "The modern cotton tee", detail: "Midweight cotton · Women", price: 52, image: "images/tops-09.jpg", category: "Tops", department: "Women", styles: ["street", "minimal"] },
+  { id: "clean-cut-tee", name: "The clean-cut tee", detail: "Soft organic cotton · Men", price: 48, image: "images/tops-10.jpg", category: "Tops", department: "Men", styles: ["minimal", "classic"] },
+  { id: "printed-lounge-tee", name: "The printed lounge tee", detail: "Relaxed cotton · Unisex", price: 58, image: "images/sets-01.jpg", category: "Tops", department: "Unisex", styles: ["street"] },
+  { id: "fine-knit-polo", name: "The fine-knit polo", detail: "Textured cotton knit · Men", price: 108, image: "images/sets-05.jpg", category: "Tops", department: "Men", styles: ["classic", "minimal"] },
+  { id: "graphic-studio-tee", name: "The graphic studio tee", detail: "Everyday jersey · Unisex", price: 56, image: "images/outerwear-08.jpg", category: "Tops", department: "Unisex", styles: ["street"] },
+  { id: "soft-stripe-shirt", name: "The soft stripe shirt", detail: "Relaxed cotton poplin · Men", price: 96, image: "images/sets-06.jpg", category: "Tops", department: "Men", styles: ["classic", "minimal"] },
+  { id: "graphic-lounge-coord", name: "The graphic lounge co-ord", detail: "A matching cotton pair · Women", price: 148, image: "images/sets-01.jpg", category: "Sets", department: "Women", styles: ["street", "minimal"] },
+  { id: "denim-day-set", name: "The denim day set", detail: "Easy matching separates · Women", price: 188, image: "images/sets-02.jpg", category: "Sets", department: "Women", styles: ["street", "classic"] },
+  { id: "coastal-linen-set", name: "The coastal linen set", detail: "Breezy two-piece linen · Women", price: 198, image: "images/sets-03.jpg", category: "Sets", department: "Women", styles: ["minimal", "classic"] },
+  { id: "soft-weekend-set", name: "The soft weekend set", detail: "Comfort-first layers · Unisex", price: 158, image: "images/sets-04.jpg", category: "Sets", department: "Unisex", styles: ["minimal", "street"] },
+  { id: "weekday-shirt-set", name: "The weekday shirt set", detail: "A polished shirt pairing · Men", price: 168, image: "images/sets-05.jpg", category: "Sets", department: "Men", styles: ["classic", "minimal"] },
+  { id: "lightweight-denim-set", name: "The lightweight denim set", detail: "Soft denim separates · Men", price: 198, image: "images/sets-06.jpg", category: "Sets", department: "Men", styles: ["street", "classic"] },
+  { id: "utility-two-piece", name: "The utility two-piece", detail: "Relaxed everyday cotton · Men", price: 178, image: "images/sets-07.jpg", category: "Sets", department: "Men", styles: ["street", "minimal"] },
+  { id: "rose-lounge-set", name: "The rose lounge set", detail: "Soft jersey pair · Women", price: 138, image: "images/sets-08.jpg", category: "Sets", department: "Women", styles: ["minimal", "street"] },
+  { id: "weekend-knit-set", name: "The weekend knit set", detail: "A cozy matching moment · Women", price: 168, image: "images/sets-09.jpg", category: "Sets", department: "Women", styles: ["minimal", "classic"] },
+  { id: "studio-coord-set", name: "The studio co-ord", detail: "Clean-lined two-piece · Women", price: 185, image: "images/sets-10.jpg", category: "Sets", department: "Women", styles: ["minimal", "classic"] },
+  { id: "structured-mini-bag", name: "The structured mini bag", detail: "A polished everyday carry · Women", price: 128, image: "images/accessories-01.jpg", category: "Accessories", department: "Women", styles: ["classic", "minimal"] },
+  { id: "woven-crossbody", name: "The woven crossbody", detail: "Textured handwoven finish · Women", price: 110, image: "images/accessories-02.jpg", category: "Accessories", department: "Women", styles: ["classic", "street"] },
+  { id: "pastel-evening-purse", name: "The pastel evening purse", detail: "A small pop of color · Women", price: 78, image: "images/accessories-03.jpg", category: "Accessories", department: "Women", styles: ["classic", "street"] },
+  { id: "quilted-shoulder-bag", name: "The quilted shoulder bag", detail: "Soft leather-look finish · Women", price: 148, image: "images/accessories-04.jpg", category: "Accessories", department: "Women", styles: ["classic", "minimal"] },
+  { id: "everyday-city-pack", name: "The everyday city pack", detail: "Hands-free daily carry · Unisex", price: 96, image: "images/accessories-05.jpg", category: "Accessories", department: "Unisex", styles: ["minimal", "street"] },
+  { id: "minimal-steel-watch", name: "The minimal steel watch", detail: "A clean everyday dial · Unisex", price: 165, image: "images/accessories-06.jpg", category: "Accessories", department: "Unisex", styles: ["minimal", "classic"] },
+  { id: "oval-sun-frames", name: "The oval sun frames", detail: "Lightweight acetate · Women", price: 74, image: "images/accessories-07.jpg", category: "Accessories", department: "Women", styles: ["classic", "street"] },
+  { id: "printed-weekender", name: "The printed weekender", detail: "Room for a little more · Women", price: 138, image: "images/accessories-08.jpg", category: "Accessories", department: "Women", styles: ["street", "classic"] },
+  { id: "blue-stone-pendant", name: "The blue stone pendant", detail: "A small color note · Women", price: 62, image: "images/accessories-09.jpg", category: "Accessories", department: "Women", styles: ["classic", "minimal"] },
+  { id: "fine-chain-necklace", name: "The fine chain necklace", detail: "A delicate everyday layer · Women", price: 58, image: "images/accessories-10.jpg", category: "Accessories", department: "Women", styles: ["minimal", "classic"] },
 ];
 
 const storageKeys = { cart: "schick-cart", wishlist: "schick-wishlist" };
+const pageSize = 30;
 const state = {
   category: "All",
   department: "All",
@@ -30,14 +71,46 @@ const state = {
   wishlist: [],
   cart: [],
 };
+let currentPage = 1;
+
+const page = new URLSearchParams(window.location.search).get("page");
+const shopPage = ["new-in", "women", "men", "explore"].includes(page) ? page : "home";
+if (shopPage === "women" || shopPage === "men") {
+  state.department = shopPage === "women" ? "Women" : "Men";
+}
 
 const productGrid = document.querySelector("#product-grid");
+const pagination = document.querySelector(".pagination");
 const emptyState = document.querySelector("#empty-state");
 const resultsSummary = document.querySelector(".results-summary");
 const cartDialog = document.querySelector("#cart-dialog");
 const cartItems = document.querySelector("#cart-items");
 const cartEmpty = document.querySelector("#cart-empty");
 const toastRegion = document.querySelector(".toast-region");
+
+function configurePage() {
+  const isHome = shopPage === "home";
+  const isExplore = shopPage === "explore";
+  document.querySelector(".hero").hidden = !isHome;
+  document.querySelector(".intro").hidden = !isHome;
+  document.querySelector(".stylist-banner").hidden = !isHome;
+  document.querySelector("#collection").hidden = isExplore;
+  document.querySelector("#categories").hidden = !isHome && !isExplore;
+
+  const pageTitles = {
+    "new-in": ["SCHICK — New in", "New in the mix"],
+    women: ["SCHICK — Women", "The women’s edit"],
+    men: ["SCHICK — Men", "The men’s edit"],
+    explore: ["SCHICK — Explore", "Explore the collection"],
+  };
+  if (pageTitles[shopPage]) {
+    document.title = pageTitles[shopPage][0];
+    document.querySelector("#collection-title").textContent = pageTitles[shopPage][1];
+  }
+  document.querySelectorAll(".main-nav [data-page]").forEach((link) => {
+    if (link.dataset.page === shopPage) link.setAttribute("aria-current", "page");
+  });
+}
 
 function showToast(message) {
   const toast = document.createElement("div");
@@ -101,9 +174,33 @@ function getVisibleProducts() {
   return visible;
 }
 
+function renderPagination(pageCount) {
+  pagination.hidden = pageCount <= 1;
+  if (pageCount <= 1) {
+    pagination.innerHTML = "";
+    return;
+  }
+
+  const pageButtons = Array.from({ length: pageCount }, (_, index) => {
+    const number = index + 1;
+    const current = number === currentPage;
+    return `<button class="page-number" type="button" data-page-number="${number}" aria-label="Page ${number}" ${current ? 'aria-current="page"' : ""}>${number}</button>`;
+  }).join("");
+
+  pagination.innerHTML = `
+    <button class="pagination-direction" type="button" data-page-action="previous" ${currentPage === 1 ? "disabled" : ""}>Previous</button>
+    <div class="pagination-pages" role="group" aria-label="Choose a page">${pageButtons}</div>
+    <button class="pagination-direction" type="button" data-page-action="next" ${currentPage === pageCount ? "disabled" : ""}>Next</button>`;
+}
+
 function renderProducts() {
   const visible = getVisibleProducts();
-  productGrid.innerHTML = visible.map((product) => {
+  const pageCount = Math.max(1, Math.ceil(visible.length / pageSize));
+  currentPage = Math.min(currentPage, pageCount);
+  const firstProduct = (currentPage - 1) * pageSize;
+  const pageProducts = visible.slice(firstProduct, firstProduct + pageSize);
+
+  productGrid.innerHTML = pageProducts.map((product) => {
     const isSaved = state.wishlist.includes(product.id);
     const quantity = getCartQuantity(product.id);
     return `
@@ -111,7 +208,7 @@ function renderProducts() {
         <div class="product-image-wrap">
           <img src="${product.image}" alt="${product.name}" loading="lazy" />
           <button class="favorite-button" type="button" data-favorite="${product.id}" aria-label="${isSaved ? "Remove from" : "Add to"} saved items" aria-pressed="${isSaved}">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35 10.55 20C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.51L12 21.35Z"></path></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12Z"></path></svg>
           </button>
         </div>
         <div class="product-info">
@@ -126,11 +223,13 @@ function renderProducts() {
       </article>`;
   }).join("");
 
-  productGrid.hidden = visible.length === 0;
+  productGrid.hidden = pageProducts.length === 0;
   emptyState.hidden = visible.length !== 0;
+  renderPagination(pageCount);
   const count = visible.length;
   const suffix = count === 1 ? "piece" : "pieces";
-  resultsSummary.textContent = `${count} ${suffix}${state.recommendations ? " in your personal edit" : state.wishlistOnly ? " saved for later" : ""}`;
+  const range = visible.length > pageSize ? `Showing ${firstProduct + 1}-${Math.min(firstProduct + pageSize, count)} of ` : "";
+  resultsSummary.textContent = `${range}${count} ${suffix}${state.recommendations ? " in your personal edit" : state.wishlistOnly ? " saved for later" : ""}`;
 }
 
 function updateHeaderCounts() {
@@ -208,6 +307,7 @@ function changeCartQuantity(productId, change) {
 
 function setCategory(category) {
   state.category = category;
+  currentPage = 1;
   document.querySelectorAll(".filter-chip").forEach((chip) => {
     const isActive = chip.dataset.category === category;
     chip.classList.toggle("is-active", isActive);
@@ -227,25 +327,32 @@ document.querySelectorAll(".filter-chip").forEach((button) => {
 
 document.querySelector("#product-search").addEventListener("input", (event) => {
   state.query = event.target.value.trim().toLowerCase();
+  currentPage = 1;
+  document.querySelector("#collection").hidden = false;
   renderProducts();
 });
 
 document.querySelector("#sort-products").addEventListener("change", (event) => {
   state.sort = event.target.value;
   state.recommendations = false;
+  currentPage = 1;
   renderProducts();
 });
 
-document.querySelectorAll("[data-department]").forEach((control) => {
-  control.addEventListener("click", (event) => {
-    event.preventDefault();
-    state.department = control.dataset.department;
-    state.wishlistOnly = false;
-    state.recommendations = false;
-    state.maxPrice = null;
-    setCategory("All");
-    document.querySelector("#collection").scrollIntoView({ behavior: "smooth" });
-  });
+pagination.addEventListener("click", (event) => {
+  const button = event.target.closest("button");
+  if (!button || button.disabled) return;
+
+  const visibleCount = getVisibleProducts().length;
+  const pageCount = Math.ceil(visibleCount / pageSize);
+  const targetPage = button.dataset.pageNumber
+    ? Number(button.dataset.pageNumber)
+    : currentPage + (button.dataset.pageAction === "next" ? 1 : -1);
+  if (!Number.isInteger(targetPage) || targetPage < 1 || targetPage > pageCount || targetPage === currentPage) return;
+
+  currentPage = targetPage;
+  renderProducts();
+  document.querySelector("#collection").scrollIntoView({ behavior: "smooth" });
 });
 
 document.querySelectorAll("[data-category]:not(.filter-chip)").forEach((control) => {
@@ -255,6 +362,7 @@ document.querySelectorAll("[data-category]:not(.filter-chip)").forEach((control)
     state.recommendations = false;
     state.maxPrice = null;
     setCategory(control.dataset.category);
+    document.querySelector("#collection").hidden = false;
     document.querySelector("#collection").scrollIntoView({ behavior: "smooth" });
   });
 });
@@ -268,6 +376,7 @@ document.querySelector(".wishlist-toggle").addEventListener("click", () => {
   document.querySelector("#product-search").value = "";
   setCategory("All");
   if (state.wishlistOnly && state.wishlist.length === 0) showToast("Save a piece with the heart to find it here.");
+  document.querySelector("#collection").hidden = false;
   document.querySelector("#collection").scrollIntoView({ behavior: "smooth" });
 });
 
@@ -351,6 +460,7 @@ document.querySelector(".checkout-button").addEventListener("click", () => {
 });
 
 document.querySelector("#current-year").textContent = new Date().getFullYear();
+configurePage();
 state.wishlist = readStoredList(storageKeys.wishlist).filter((id) => products.some((product) => product.id === id));
 state.cart = readStoredList(storageKeys.cart)
   .filter((item) => item && products.some((product) => product.id === item.id) && Number.isInteger(item.quantity) && item.quantity > 0);

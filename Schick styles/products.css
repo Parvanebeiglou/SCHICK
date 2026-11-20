@@ -40,6 +40,23 @@
 .sort-control { display: flex; flex: 0 0 auto; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; }
 .sort-control select { padding: 7px 0 7px 4px; border: 0; background: transparent; color: var(--ink); font-size: 14px; cursor: pointer; }
 .results-summary { min-height: 18px; margin: 15px 0 10px; color: var(--muted); font-size: 14px; }
+.pagination { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 34px 0 12px; }
+.pagination-pages { display: flex; gap: 6px; }
+.pagination button {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.pagination .pagination-direction { min-width: 84px; }
+.pagination button:hover:not(:disabled) { border-color: var(--ink); background: #e9e5db; }
+.pagination .page-number[aria-current="page"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+.pagination button:disabled { color: #a8a69e; cursor: not-allowed; }
 .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 34px 18px; }
 .product-card { min-width: 0; }
 .product-image-wrap { position: relative; overflow: hidden; background: #e8e5de; }
@@ -105,7 +122,7 @@
 .empty-state h3 { margin: 0; font-family: var(--serif); font-size: 32px; font-weight: 500; }
 .empty-state > p:not(.eyebrow) { margin: 10px auto 22px; color: var(--muted); font-size: 16px; }
 .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.category-card { position: relative; min-width: 0; overflow: hidden; padding: 0; border: 0; background: #e9e5db; cursor: pointer; text-align: left; }
+.category-card { position: relative; display: block; min-width: 0; overflow: hidden; padding: 0; border: 0; background: #e9e5db; cursor: pointer; text-align: left; }
 .category-card::after { position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, #1415118c); content: ""; }
 .category-card img { width: 100%; aspect-ratio: 1.12 / 1; object-fit: cover; transition: transform .4s; }
 .category-card:hover img { transform: scale(1.04); }

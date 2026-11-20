@@ -28,12 +28,12 @@
     </div>
 
     <header class="site-header">
-      <a class="brand" href="#" aria-label="SCHICK home">SCHICK<span>.</span></a>
+      <a class="brand" href="index.html" aria-label="SCHICK home">SCHICK<span>.</span></a>
       <nav class="main-nav" aria-label="Main navigation">
-        <a href="#collection">New in</a>
-        <a href="#collection" data-department="Women">Women</a>
-        <a href="#collection" data-department="Men">Men</a>
-        <a href="#categories">Explore</a>
+        <a href="?page=new-in" data-page="new-in">New in</a>
+        <a href="?page=women" data-page="women">Women</a>
+        <a href="?page=men" data-page="men">Men</a>
+        <a href="?page=explore" data-page="explore">Explore</a>
       </nav>
       <div class="header-actions">
         <label class="search-box">
@@ -42,7 +42,7 @@
           <input id="product-search" type="search" placeholder="Find something..." autocomplete="off" />
         </label>
         <button class="icon-button wishlist-toggle" type="button" aria-label="Show saved items">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.7c0 5.2-8.8 10.1-8.8 10.1S3.2 13.9 3.2 8.7a4.6 4.6 0 0 1 8-3.1 4.6 4.6 0 0 1 8 3.1Z"></path></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12Z"></path></svg>
           <span class="count-badge wishlist-count" aria-live="polite">0</span>
         </button>
         <button class="icon-button cart-toggle" type="button" aria-label="Open shopping bag">
@@ -100,6 +100,7 @@
         </div>
         <p class="results-summary" aria-live="polite"></p>
         <div class="product-grid" id="product-grid" aria-live="polite"></div>
+        <nav class="pagination" aria-label="Product pages" hidden></nav>
         <div class="empty-state" id="empty-state" hidden>
           <p class="eyebrow">Nothing here (yet)</p>
           <h3>No pieces found.</h3>
@@ -127,14 +128,14 @@
           <p class="section-note">A few good places to start your search.</p>
         </div>
         <div class="category-grid">
-          <button class="category-card" type="button" data-department="Women">
+          <a class="category-card" href="?page=women">
             <img src="images/25099.jpg" alt="" loading="lazy" />
             <span>For her <span aria-hidden="true">↗</span></span>
-          </button>
-          <button class="category-card" type="button" data-department="Men">
+          </a>
+          <a class="category-card" href="?page=men">
             <img src="images/pexels_olly_3755706.jpg" alt="" loading="lazy" />
             <span>For him <span aria-hidden="true">↗</span></span>
-          </button>
+          </a>
           <button class="category-card" type="button" data-category="Accessories">
             <img src="images/bag.jpg" alt="" loading="lazy" />
             <span>The finishing touch <span aria-hidden="true">↗</span></span>
@@ -162,11 +163,11 @@
     <footer class="site-footer">
       <div class="footer-top">
         <div class="footer-brand">
-          <a class="brand brand-footer" href="#">SCHICK<span>.</span></a>
+          <a class="brand brand-footer" href="index.html">SCHICK<span>.</span></a>
           <p>Style should feel like you.<br />We’re just here to help you find it.</p>
         </div>
         <div class="footer-links">
-          <div><p class="footer-label">The shop</p><a href="#collection">New in</a><a href="#collection" data-department="Women">Women</a><a href="#collection" data-department="Men">Men</a></div>
+          <div><p class="footer-label">The shop</p><a href="?page=new-in">New in</a><a href="?page=women">Women</a><a href="?page=men">Men</a><a href="?page=explore">Explore</a></div>
           <div><p class="footer-label">A hand</p><a href="#newsletter-form">Get in touch</a><a href="#newsletter-form">Shipping & returns</a><a href="#newsletter-form">FAQs</a></div>
           <div><p class="footer-label">The small print</p><a href="#newsletter-form">Privacy</a><a href="#newsletter-form">Terms</a></div>
         </div>
